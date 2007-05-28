@@ -1,5 +1,5 @@
-%define version	2.0.7
-%define rel	    11
+%define version	2.0.8
+%define rel	    1
 %define name 	heartbeat
 
 # compatability macros
@@ -254,6 +254,7 @@ rm -Rf %{buildroot}
 %multiarch_includes %{buildroot}%{_includedir}/heartbeat/heartbeat.h
 
 install -d %{buildroot}%{_sysconfdir}/ha.d/ppp.d
+install -d %{buildroot}%{_sysconfdir}/ha.d/conf
 
 install -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/ha.d
 install -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/ha.d
@@ -270,6 +271,10 @@ install -m0644 rc.config.heartbeat $TEMPL
 install -m0644 ldirectord/ldirectord.cf  %{buildroot}%{_sysconfdir}/ha.d/conf
 perl -pi -e "s,$RPM_BUILD_DIR/%{name}-%{version},,g" %{buildroot}%{_libdir}/libstonith.la
 rm -f %{buildroot}%{_libdir}/*.so
+
+# python cleanup
+find %{buildroot}%{_libdir}/heartbeat/ -type f -name '*.pyc' -exec rm -f {} \;
+find %{buildroot}%{_libdir}/heartbeat/ -type f -name '*.pyo' -exec rm -f {} \;
 
 %pre
 if grep -q '^haclient:' etc/group >/dev/null ; then
@@ -400,13 +405,14 @@ rm -rf %{buildroot}
 %{_sbindir}/cibadmin
 %{_sbindir}/crmadmin
 %{_sbindir}/iso8601
+%{_sbindir}/ocf-tester
 %{_mandir}/man1/cl_status.1*
 %{_mandir}/man1/ha_logger.1*
 %{_mandir}/man1/hb_addnode.1*
 %{_mandir}/man1/hb_delnode.1*
 %{_mandir}/man8/ha_logd.8*
+%{_mandir}/man8/crm_resource.8.bz2
 %dir %{_libdir}/heartbeat
-%{_libdir}/heartbeat/*.png
 %{_libdir}/heartbeat/BasicSanityCheck
 %{_libdir}/heartbeat/api_test
 %{_libdir}/heartbeat/apphbd
@@ -426,8 +432,6 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat/ha_logd
 %{_libdir}/heartbeat/ha_logger
 %{_libdir}/heartbeat/ha_propagate
-%{_libdir}/heartbeat/haclient.glade
-%{_libdir}/heartbeat/haclient.py
 %{_libdir}/heartbeat/haresources2cib.py
 %{_libdir}/heartbeat/hb_addnode
 %{_libdir}/heartbeat/hb_delnode
@@ -442,7 +446,6 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat/lrmd
 %{_libdir}/heartbeat/lrmtest/LRMBasicSanityCheck
 %{_libdir}/heartbeat/mach_down
-%{_libdir}/heartbeat/mgmtcmd.py
 %{_libdir}/heartbeat/mgmtd
 %{_libdir}/heartbeat/mgmtdtest
 %{_libdir}/heartbeat/mlock
@@ -450,7 +453,6 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat/pengine
 %{_libdir}/heartbeat/pingd
 %{_libdir}/heartbeat/ptest
-%{_libdir}/heartbeat/pymgmt.py
 %{_libdir}/heartbeat/req_resource
 %{_libdir}/heartbeat/send_arp
 %{_libdir}/heartbeat/ResourceManager
@@ -462,6 +464,19 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat/ipctransientclient
 %{_libdir}/heartbeat/ipctransientserver
 %{_libdir}/heartbeat/recoverymgrd
+%{_libdir}/heartbeat/crm_commands.py
+%{_libdir}/heartbeat/crm_primitive.py
+%{_libdir}/heartbeat/crm_utils.py
+%{_libdir}/heartbeat/dopd
+%{_libdir}/heartbeat/drbd-peer-outdater
+%{_libdir}/heartbeat/ocf-returncodes
+%{_libdir}/heartbeat/quorumd
+%{_libdir}/heartbeat/quorumdtest
+%dir %{_libdir}/heartbeat-gui
+%{_libdir}/heartbeat-gui/*
+%exclude %{_libdir}/heartbeat-gui/*.a
+%exclude %{_libdir}/heartbeat-gui/*.la
+%exclude %{_libdir}/heartbeat-gui/*.so
 %dir %{_libdir}/heartbeat/plugins
 %dir %{_libdir}/heartbeat/plugins/*
 %{_libdir}/heartbeat/plugins/*/*.so
@@ -478,8 +493,6 @@ rm -rf %{buildroot}
 %files -n %libheart
 %defattr(-,root,root)
 %doc README doc/AUTHORS doc/COPYING doc/ChangeLog
-%{_libdir}/heartbeat/_pymgmt.so
-%{_libdir}/heartbeat/_pymgmt.so.*
 %{_libdir}/libcib.so.*
 %{_libdir}/libcrmcommon.so.*
 %{_libdir}/libhbclient.so.*
@@ -505,8 +518,6 @@ rm -rf %{buildroot}
 %files -n %libheart-devel
 %defattr(-,root,root)
 %doc README doc/AUTHORS doc/COPYING doc/ChangeLog
-%{_libdir}/heartbeat/_pymgmt.a
-%{_libdir}/heartbeat/_pymgmt.la
 %{_libdir}/libapphb.a
 %{_libdir}/libapphb.la
 %{_libdir}/libccmclient.a
@@ -545,6 +556,9 @@ rm -rf %{buildroot}
 %{_libdir}/libclm.la
 %{_libdir}/heartbeat/plugins/*/*.a
 %{_libdir}/heartbeat/plugins/*/*.la
+%{_libdir}/heartbeat-gui/*.a
+%{_libdir}/heartbeat-gui/*.la
+%{_libdir}/heartbeat-gui/*.so
 %dir %{_includedir}/heartbeat
 %{_includedir}/heartbeat/*.h
 %{multiarch_includedir}/heartbeat/heartbeat.h
@@ -553,6 +567,8 @@ rm -rf %{buildroot}
 %dir %{_includedir}/clplumbing
 %{_includedir}/clplumbing/*.h
 %{_includedir}/saf
+%dir %{_includedir}/heartbeat/crm
+%{_includedir}/heartbeat/crm/*
 
 %files ldirectord
 %defattr(-,root,root)
