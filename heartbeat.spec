@@ -1,5 +1,5 @@
 %define version	2.0.8
-%define rel	    1
+%define rel	    2
 %define name 	heartbeat
 
 # compatability macros
@@ -238,18 +238,19 @@ implementing any number of interfaces.
 %patch1 -p1 -b .provides
 
 %build
+%serverbuild
 %configure2_5x	--enable-checkpointd \
 		--localstatedir=/var \
 		--with-initdir=%{_initrddir} \
 		--disable-fatal-warnings
-%serverbuild
+
 export LIBS="-L%{_libdir}"
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -DUSE_VENDOR_CF_PATH=1"
 %make
 
 %install
 rm -Rf %{buildroot}
-%makeinstall_std
+%makeinstall_std docdir=%{_docdir}/%{name}
 %multiarch_includes %{buildroot}%{_includedir}/pils/plugin.h
 %multiarch_includes %{buildroot}%{_includedir}/heartbeat/heartbeat.h
 
