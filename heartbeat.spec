@@ -412,7 +412,7 @@ rm -rf %{buildroot}
 %{_mandir}/man1/hb_addnode.1*
 %{_mandir}/man1/hb_delnode.1*
 %{_mandir}/man8/ha_logd.8*
-%{_mandir}/man8/crm_resource.8.bz2
+%{_mandir}/man8/crm_resource.8*
 %dir %{_libdir}/heartbeat
 %{_libdir}/heartbeat/BasicSanityCheck
 %{_libdir}/heartbeat/api_test
@@ -643,5 +643,3 @@ rm -rf %{buildroot}
 %{_libdir}/libpils.la
 %{_libdir}/pils/plugins/InterfaceMgr/*.a
 %{_libdir}/pils/plugins/InterfaceMgr/*.la
-
-
