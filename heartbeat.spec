@@ -1,5 +1,5 @@
 %define version	2.0.8
-%define rel	    2
+%define rel	    3
 %define name 	heartbeat
 
 # compatability macros
