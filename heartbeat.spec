@@ -60,7 +60,6 @@ BuildRequires:	ncurses-devel
 BuildRequires:	python-devel
 BuildRequires:  pam-devel
 Requires(pre):	rpm-helper
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-%{release}-buildroot
 
 
 %description
