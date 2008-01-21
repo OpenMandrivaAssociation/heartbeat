@@ -1,5 +1,5 @@
 %define version	2.0.8
-%define rel	    4
+%define rel	    5
 %define name 	heartbeat
 
 # compatability macros
@@ -27,7 +27,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %rel
 Summary:	Heartbeat subsystem for High-Availability Linux
-License:	GPL
+License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
 Source0:	http://linux-ha.org/download/%{name}-%{version}.tar.gz
