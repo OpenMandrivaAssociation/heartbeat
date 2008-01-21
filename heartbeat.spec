@@ -43,7 +43,7 @@ Requires:	sysklogd
 Requires:	heartbeat-pils = %{version}-%{release}
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	glib2-devel
-BuildRequires:	libdb-devel
+BuildRequires:	db-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	lynx
 BuildRequires:	libnet1.1.2-devel
