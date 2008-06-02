@@ -266,7 +266,7 @@ cd %{buildroot}%{_sysconfdir}/ha.d/resource.d
     ln -s %{_sbindir}/ldirectord ldirectord
 cd -
 
-TEMPL=%{buildroot}%_localstatedir/heartbeat/fillup-templates
+TEMPL=%{buildroot}%_localstatedir/lib/heartbeat/fillup-templates
 install -d $TEMPL
 install -m0644 rc.config.heartbeat $TEMPL
 install -m0644 ldirectord/ldirectord.cf  %{buildroot}%{_sysconfdir}/ha.d/conf
@@ -487,9 +487,9 @@ rm -rf %{buildroot}
 %{_mandir}/man1/hb_standby*
 %{_mandir}/man1/hb_takeover*
 %{_mandir}/man8/cibadmin*
-%dir %{_localstatedir}/heartbeat
-%dir %{_localstatedir}/heartbeat/fillup-templates
-%{_localstatedir}/heartbeat/fillup-templates/*
+%dir %{_localstatedir}/lib/heartbeat
+%dir %{_localstatedir}/lib/heartbeat/fillup-templates
+%{_localstatedir}/lib/heartbeat/fillup-templates/*
 
 %files -n %libheart
 %defattr(-,root,root)
