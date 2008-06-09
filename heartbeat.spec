@@ -358,17 +358,29 @@ fi
 %preun ldirectord
 %_preun_service ldirectord
 
+%if %mdkversion < 200900
 %post -n %{libheart} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libheart} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %post -n %{libpils} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libpils} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %post -n %{libstonith} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libstonith} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -rf %{buildroot}
