@@ -25,7 +25,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
