@@ -35,8 +35,8 @@ Source2:	ha.cf
 Source3:	authkeys
 Source4:	www.cf
 Source5:	http://linux-ha.org/download/%{name}-%{version}.sums.asc
-Patch:		heartbeat-1.2.4-ldirectory-usage.patch
-Patch1:		heartbeat-2.0.7-init.patch
+Patch0:		heartbeat-1.2.4-ldirectory-usage.patch
+Patch1:		heartbeat-2.1.3-init.patch
 Requires:	sysklogd
 # http://qa.mandriva.com/show_bug.cgi?id=23050
 Requires:	heartbeat-pils = %{version}-%{release}
@@ -233,7 +233,7 @@ implementing any number of interfaces.
 
 %prep
 %setup -q
-%patch -p1 -b .ldirectory-usage
+%patch0 -p1 -b .ldirectory-usage
 %patch1 -p1 -b .provides
 
 %build
