@@ -25,7 +25,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -46,7 +46,7 @@ BuildRequires:	e2fsprogs-devel
 BuildRequires:	glib2-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libgnutls-devel
-BuildRequires:	libnet1.1.2-devel
+BuildRequires:	net-devel >= 1.1.3
 BuildRequires:	libxml2-devel
 BuildRequires:	lynx
 BuildRequires:	ncurses-devel
@@ -60,7 +60,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	swig
 Requires(pre):	rpm-helper
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 heartbeat is a basic heartbeat subsystem for Linux-HA.
