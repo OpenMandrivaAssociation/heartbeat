@@ -474,7 +474,6 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat/lrmadmin
 %{_libdir}/heartbeat/lrmd
 %{_libdir}/heartbeat/lrmtest
-%{_libdir}/heartbeat/lrmtest/LRMBasicSanityCheck
 %{_libdir}/heartbeat/mach_down
 %{_libdir}/heartbeat/mgmtd
 %{_libdir}/heartbeat/mgmtdtest
