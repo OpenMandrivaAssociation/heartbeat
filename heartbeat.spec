@@ -672,6 +672,9 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat-gui/*.la
 %{_libdir}/heartbeat-gui/*.so
 %{_includedir}/heartbeat
+%{_includedir}/clplumbing
+%{_includedir}/ocf
+%{_includedir}/saf
 %{multiarch_includedir}/heartbeat/heartbeat.h
 
 %files ldirectord
