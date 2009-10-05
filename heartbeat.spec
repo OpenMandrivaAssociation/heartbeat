@@ -671,22 +671,8 @@ rm -rf %{buildroot}
 %{_libdir}/heartbeat-gui/*.a
 %{_libdir}/heartbeat-gui/*.la
 %{_libdir}/heartbeat-gui/*.so
-%dir %{_includedir}/heartbeat
-%{_includedir}/heartbeat/*.h
+%{_includedir}/heartbeat
 %{multiarch_includedir}/heartbeat/heartbeat.h
-%dir %{_includedir}/ocf
-%{_includedir}/ocf/*.h
-%dir %{_includedir}/clplumbing
-%{_includedir}/clplumbing/*.h
-%{_includedir}/saf
-%dir %{_includedir}/heartbeat/crm
-%{_includedir}/heartbeat/crm/*
-%dir %{_includedir}/heartbeat/fencing
-%{_includedir}/heartbeat/fencing/*.h
-%dir %{_includedir}/heartbeat/lrm
-%{_includedir}/heartbeat/lrm/*.h
-%dir %{_includedir}/heartbeat/mgmt
-%{_includedir}/heartbeat/mgmt/*.h
 
 %files ldirectord
 %defattr(-,root,root)
@@ -731,8 +717,7 @@ rm -rf %{buildroot}
 %{_libdir}/libstonithd.la
 %{_libdir}/stonith/plugins/stonith2/*.a
 %{_libdir}/stonith/plugins/stonith2/*.la
-%dir %{_includedir}/stonith
-%{_includedir}/stonith/*.h
+%{_includedir}/stonith
 
 %files pils
 %defattr(-,root,root)
@@ -750,8 +735,7 @@ rm -rf %{buildroot}
 %files -n %libpils-devel
 %defattr(-,root,root)
 %doc README doc/AUTHORS doc/COPYING doc/ChangeLog
-%dir %{_includedir}/pils
-%{_includedir}/pils/*.h
+%{_includedir}/pils
 %{multiarch_includedir}/pils/plugin.h
 %{_libdir}/libpils.a
 %{_libdir}/libpils.la
