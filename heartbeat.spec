@@ -25,7 +25,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -37,6 +37,7 @@ Source4:	www.cf
 Source5:	http://linux-ha.org/download/%{name}-%{version}.sums.asc
 Patch0:		heartbeat-1.2.4-ldirectory-usage.patch
 Patch1:		heartbeat-2.1.3-init.patch
+Patch2:		heartbeat-2.1.3-no_dupe_installs.diff
 # http://qa.mandriva.com/show_bug.cgi?id=23050
 Requires:	heartbeat-pils = %{version}-%{release}
 BuildRequires:	bzip2-devel
@@ -45,10 +46,12 @@ BuildRequires:	e2fsprogs-devel
 BuildRequires:	glib2-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libgnutls-devel
-BuildRequires:	net-devel >= 1.1.3
+BuildRequires:	libtool
+BuildRequires:	libtool-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	lynx
 BuildRequires:	ncurses-devel
+BuildRequires:	net-devel >= 1.1.3
 BuildRequires:	net-snmp
 BuildRequires:	net-snmp-devel
 BuildRequires:	openssh-clients
@@ -234,9 +237,13 @@ implementing any number of interfaces.
 %setup -q
 %patch0 -p1 -b .ldirectory-usage
 %patch1 -p1 -b .provides
+%patch2 -p0
 
 %build
 %serverbuild
+rm -rf libltdl
+libtoolize --force --copy --install --ltdl
+autoreconf -fi
 
 %configure2_5x \
     --enable-checkpointd \
