@@ -25,7 +25,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 9
+Release:	%mkrel 10
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -300,6 +300,8 @@ else
 			usr/sbin/groupadd haclient
 		fi
 fi
+# https://qa.mandriva.com/show_bug.cgi?id=45032
+if [ -d %{_libdir}/heartbeat/lrmtest ]; then rm -rf %{_libdir}/heartbeat/lrmtest; fi
 
 %post
 #
