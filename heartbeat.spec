@@ -25,7 +25,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -38,6 +38,7 @@ Source5:	http://linux-ha.org/download/%{name}-%{version}.sums.asc
 Patch0:		heartbeat-1.2.4-ldirectory-usage.patch
 Patch1:		heartbeat-2.1.3-init.patch
 Patch2:		heartbeat-2.1.3-no_dupe_installs.diff
+Patch3:		heartbeat-2.1.3-CVE-2009-3736.diff
 # http://qa.mandriva.com/show_bug.cgi?id=23050
 Requires:	heartbeat-pils = %{version}-%{release}
 BuildRequires:	bzip2-devel
@@ -238,6 +239,7 @@ implementing any number of interfaces.
 %patch0 -p1 -b .ldirectory-usage
 %patch1 -p1 -b .provides
 %patch2 -p0
+%patch3 -p0 -b .CVE-2009-3736
 
 %build
 %serverbuild
