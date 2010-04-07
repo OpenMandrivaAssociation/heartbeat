@@ -1,6 +1,3 @@
-%define _disable_ld_as_needed 1
-%define _disable_ld_no_undefined 1
-
 # compatability macros
 %{!?lib: %global lib lib}
 %{!?mklibname: %global mklibname(ds) %lib%{1}%{?2:%{2}}%{?3:_%{3}}%{-s:-static}%{-d:-devel}}
@@ -25,7 +22,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 11
+Release:	%mkrel 12
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -39,6 +36,7 @@ Patch0:		heartbeat-1.2.4-ldirectory-usage.patch
 Patch1:		heartbeat-2.1.3-init.patch
 Patch2:		heartbeat-2.1.3-no_dupe_installs.diff
 Patch3:		heartbeat-2.1.3-CVE-2009-3736.diff
+Patch4:		heartbeat-2.1.3-fix-link.patch
 # http://qa.mandriva.com/show_bug.cgi?id=23050
 Requires:	heartbeat-pils = %{version}-%{release}
 BuildRequires:	bzip2-devel
@@ -240,21 +238,19 @@ implementing any number of interfaces.
 %patch1 -p1 -b .provides
 %patch2 -p0
 %patch3 -p0 -b .CVE-2009-3736
+%patch4 -p0 -b .link
 
 %build
+export CFLAGS="%optflags -DUSE_VENDOR_CF_PATH=1"
 %serverbuild
-rm -rf libltdl
-libtoolize --force --copy --install --ltdl
 autoreconf -fi
 
 %configure2_5x \
+    --disable-rpath \
     --enable-checkpointd \
     --localstatedir=/var \
     --with-initdir=%{_initrddir} \
     --disable-fatal-warnings
-
-export LIBS="-L%{_libdir}"
-export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -DUSE_VENDOR_CF_PATH=1"
 %make
 
 %install
