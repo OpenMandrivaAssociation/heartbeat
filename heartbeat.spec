@@ -22,7 +22,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.3
-Release:	%mkrel 13
+Release:	%mkrel 14
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -422,7 +422,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/ha.d/resource.d/*
 %config(noreplace) %{_sysconfdir}/logrotate.d/heartbeat
 %attr(0755,root,root) %{_initrddir}/heartbeat
-%{_bindir}/cl_status
+%attr(2755,root,haclient) %{_bindir}/cl_status
 %{_bindir}/cl_respawn
 %{_bindir}/hb_gui
 %{_sbindir}/attrd_updater
