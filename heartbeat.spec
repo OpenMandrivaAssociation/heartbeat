@@ -631,8 +631,11 @@ rm -rf %{buildroot}
 %{_libdir}/libpe_status.so.*
 %{_libdir}/libplumbgpl.so.*
 %{_libdir}/libtransitioner.so.*
-%_prefix/lib/ocf/resource.d/heartbeat/*
-%_prefix/lib/ocf/resource.d/heartbeat/.ocf-*
+%dir lib/ocf
+%dir lib/ocf/resource.d
+%dir lib/ocf/resource.d/heartbeat
+%{_prefix}/lib/ocf/resource.d/heartbeat/*
+%{_prefix}/lib/ocf/resource.d/heartbeat/.ocf-*
 
 %files -n %libapphb
 %defattr(-,root,root)
