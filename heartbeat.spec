@@ -300,6 +300,9 @@ else
 			usr/sbin/groupadd haclient
 		fi
 fi
+%_pre_useradd hacluster %{_localstatedir}/lib/heartbeat /sbin/nologin
+usermod -G haclient hacluster
+
 # https://qa.mandriva.com/show_bug.cgi?id=45032
 if [ -d %{_libdir}/heartbeat/lrmtest ]; then rm -rf %{_libdir}/heartbeat/lrmtest; fi
 
@@ -345,6 +348,7 @@ fi
 %_post_service heartbeat
 
 %preun
+%_postun_userdel hacluster
 
 Uninstall_PPP_hack() {
   file2hack=/etc/ppp/ip-up.local
