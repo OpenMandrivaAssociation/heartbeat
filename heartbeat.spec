@@ -27,7 +27,6 @@ Source1:	haresources
 Source2:	ha.cf
 Source3:	authkeys
 Source4:	www.cf
-Source5:	http://linux-ha.org/download/%{name}-%{version}.sums.asc
 Patch0:		heartbeat-2.1.4-ldirectory-usage.patch
 Patch2:		heartbeat-2.1.3-no_dupe_installs.diff
 Patch4:		heartbeat-2.1.3-fix-link.patch
@@ -54,6 +53,7 @@ BuildRequires:	pcre-devel
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	swig
+BuildRequires:	ossp_uuid-devel
 Requires(pre):	rpm-helper
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
