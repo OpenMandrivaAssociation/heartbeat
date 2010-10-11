@@ -54,6 +54,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	swig
 BuildRequires:	ossp_uuid-devel
+BuildRequires:	bison
 Requires(pre):	rpm-helper
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
