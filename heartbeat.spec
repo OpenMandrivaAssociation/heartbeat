@@ -36,8 +36,8 @@ BuildRequires:	bzip2-devel
 BuildRequires:	db-devel
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	glib2-devel
-BuildRequires:	libcurl-devel
-BuildRequires:	libgnutls-devel
+BuildRequires:	curl-devel
+BuildRequires:	gnutls-devel
 BuildRequires:	libtool
 BuildRequires:	libtool-devel
 BuildRequires:	libxml2-devel
@@ -251,6 +251,7 @@ rm -Rf %{buildroot}
 
 %makeinstall_std docdir=%{_docdir}/%{name}
 %multiarch_includes %{buildroot}%{_includedir}/pils/plugin.h
+
 %multiarch_includes %{buildroot}%{_includedir}/heartbeat/heartbeat.h
 
 install -d %{buildroot}%{_sysconfdir}/ha.d/ppp.d
