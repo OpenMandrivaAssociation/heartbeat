@@ -18,7 +18,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -123,7 +123,7 @@ and works with the heartbeat code (http://www.linux-ha.org/).
 %package	stonith
 Summary:	Provides an interface to Shoot The Other Node In The Head
 Group:		System/Servers
-Requires:	telnet
+Requires:	telnet-client
 
 %description	stonith
 The STONITH module (a.k.a. STOMITH) provides an extensible interface
