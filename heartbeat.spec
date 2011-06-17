@@ -18,7 +18,7 @@
 Summary:	Heartbeat subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	2.1.4
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 URL:		http://linux-ha.org/
 Group:		System/Servers
@@ -113,6 +113,9 @@ Summary:	Monitor daemon for maintaining high availability resources
 Group:		System/Servers
 Requires:	perl perl-libwww-perl perl-Net_SSLeay.pm ipvsadm
 Requires(pre): rpm-helper
+Suggests:	perl-Mail-POP3Client
+Suggests:	perl-Net-IMAP-Simple
+Suggests:	perl-Net-IMAP-Simple-SSL
 
 %description	ldirectord
 ldirectord is a stand-alone daemon to monitor services of real
