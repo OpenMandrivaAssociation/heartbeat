@@ -1,0 +1,37 @@
+--- lib/apphb/Makefile.am.link	2010-12-09 21:09:47.000000000 +0100
++++ lib/apphb/Makefile.am	2011-08-03 10:54:41.000000000 +0200
+@@ -39,3 +39,4 @@
+ endif
+ 
+ libapphb_la_LDFLAGS	= -version-info 2:0:0 
++libapphb_la_LIBADD	= -lglib-2.0 -lplumb
+--- lib/hbclient/Makefile.am.link	2010-12-09 21:09:47.000000000 +0100
++++ lib/hbclient/Makefile.am	2011-08-03 10:54:41.000000000 +0200
+@@ -45,7 +45,7 @@
+ 
+ libhbclient_la_SOURCES	= client_lib.c
+ libhbclient_la_LDFLAGS	= -version-info 1:0:0
+-libhbclient_la_LIBADD	= $(top_builddir)/replace/libreplace.la  
++libhbclient_la_LIBADD	= $(top_builddir)/replace/libreplace.la -lplumb -lglib-2.0
+ 
+ ## binary progs
+ halib_PROGRAMS		= api_test
+--- membership/ccm/Makefile.am.link	2010-12-09 21:09:47.000000000 +0100
++++ membership/ccm/Makefile.am	2011-08-03 10:55:04.000000000 +0200
+@@ -83,7 +83,7 @@
+ 
+ libccmclient_la_SOURCES	= ccmlib_memapi.c ccmlib_eventapi.c ccmlib.h
+ libccmclient_la_LDFLAGS	= -version-info 1:0:0
+-
++libccmclient_la_LIBADD = -lpils -lplumb -lglib-2.0
+ 
+ ## library libclm.la
+ libclmdir		= $(libdir)/@HB_PKG@
+@@ -96,6 +96,7 @@
+ ## Add -DPOSIX_THREADS to CFLAGS to compile a thread-safe version library
+ libclm_la_CFLAGS	= -g #-DPOSIX_THREADS
+ libclm_la_LDFLAGS	= -version-info 1:0:0
++libclm_la_LIBADD	= libccmclient.la -lpils -lplumb -lglib-2.0
+ 
+ clmtest_SOURCES		= clmtest.c
+ clmtest_LDADD		= libclm.la libccmclient.la \

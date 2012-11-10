@@ -1,0 +1,11 @@
+diff -Nur Linux-HA-Dev-0daab7da36a8.orig/heartbeat/init.d/heartbeat.in Linux-HA-Dev-0daab7da36a8/heartbeat/init.d/heartbeat.in
+--- Linux-HA-Dev-0daab7da36a8.orig/heartbeat/init.d/heartbeat.in	2009-08-18 15:54:56.000000000 -0600
++++ Linux-HA-Dev-0daab7da36a8/heartbeat/init.d/heartbeat.in	2010-04-30 13:34:36.000000000 -0600
+@@ -49,6 +49,7 @@
+ HA_DIR=@sysconfdir@/ha.d; export HA_DIR
+ CONFIG=$HA_DIR/ha.cf
+ . $HA_DIR/shellfuncs
++HA_NOARCHBIN=@HA_NOARCHDATAHBDIR@
+ 
+ LOCKDIR=@localstatedir@/lock/subsys
+ RUNDIR=@localstatedir@/run

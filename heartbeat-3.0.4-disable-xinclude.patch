@@ -1,0 +1,18 @@
+diff -Nur Heartbeat-3-0-STABLE-3.0.4.orig/doc/Makefile.am Heartbeat-3-0-STABLE-3.0.4/doc/Makefile.am
+--- Heartbeat-3-0-STABLE-3.0.4.orig/doc/Makefile.am	2010-12-09 13:09:47.000000000 -0700
++++ Heartbeat-3-0-STABLE-3.0.4/doc/Makefile.am	2011-01-23 15:40:20.965449165 -0700
+@@ -37,12 +37,12 @@
+ 			 hb_standby.1 hb_takeover.1 hb_addnode.1 hb_delnode.1 \
+ 			 ha.cf.5 authkeys.5
+ 
+-STYLESHEET_PREFIX 	?= http://docbook.sourceforge.net/release/xsl/current
++STYLESHEET_PREFIX 	?= /usr/share/sgml/docbook/xsl-stylesheets-1.76.1/
+ MANPAGES_STYLESHEET 	?= $(STYLESHEET_PREFIX)/manpages/docbook.xsl
+ HTML_STYLESHEET 	?= $(STYLESHEET_PREFIX)/xhtml/docbook.xsl
+ FO_STYLESHEET 		?= $(STYLESHEET_PREFIX)/fo/docbook.xsl
+ 
+-XSLTPROC_OPTIONS 	?= --xinclude
++XSLTPROC_OPTIONS 	?= --nonet
+ XSLTPROC_MANPAGES_OPTIONS ?= $(XSLTPROC_OPTIONS)
+ XSLTPROC_HTML_OPTIONS 	?= $(XSLTPROC_OPTIONS)
+ XSLTPROC_FO_OPTIONS 	?= $(XSLTPROC_OPTIONS)

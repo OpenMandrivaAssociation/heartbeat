@@ -1,0 +1,17 @@
+--- heartbeat/init.d/heartbeat.in.init	2011-08-03 11:24:43.000000000 +0200
++++ heartbeat/init.d/heartbeat.in	2011-08-03 11:24:50.000000000 +0200
+@@ -33,13 +33,12 @@
+ #		- "ping" heartbeats (for routers, switches, etc.)
+ #	   	(to be used for breaking ties in 2-node systems
+ #		 and monitoring networking availability)
+-#
+ # Short-Description: High-availability services.
+ # Provides: heartbeat HA
+ # Required-Start: $remote_fs $network $time $syslog
+ # Should-Start: openhpid
+ # Required-Stop: $remote_fs $network $time $syslog
+-# Should-stop: openhpid
++# Should-Stop: openhpid
+ # Default-Start: 2 3 4 5
+ # Default-Stop: 0 1 6
+ ### END INIT INFO
