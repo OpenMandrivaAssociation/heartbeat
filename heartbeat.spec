@@ -10,7 +10,7 @@
 Summary: Messaging and membership subsystem for High-Availability Linux
 Name: heartbeat
 Version: 3.0.5
-Release: %mkrel 1
+Release: 2
 License: GPLv2 and LGPLv2+
 URL: http://linux-ha.org/
 Group: System/Servers
@@ -21,7 +21,7 @@ Patch3: heartbeat-3.0.4-link.patch
 Patch4: heartbeat-3.0.4-lsbinit.patch
 BuildRequires: glib2-devel
 BuildRequires: iputils
-BuildRequires: libltdl-devel
+BuildRequires: libtool-devel
 BuildRequires: net-snmp-devel >= 5.4
 BuildRequires: bzip2-devel
 BuildRequires: ncurses-devel
@@ -171,7 +171,6 @@ Headers and shared libraries for writing programs for Heartbeat.
 %files devel
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.la
 
 #---------------------------------------------------------
 %prep
@@ -203,9 +202,6 @@ export XSLTPROC_OPTIONS=""
 [ -d %{buildroot}/usr/share/libtool ] && rm -rf %{buildroot}/usr/share/libtool
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_datadir}/doc/%{name}-%{version}
 rm -rf %{buildroot}/%{_datadir}/heartbeat/cts
-
-%clean
-rm -rf %{buildroot}
 
 %post
 %_post_service heartbeat
