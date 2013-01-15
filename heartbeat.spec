@@ -19,6 +19,7 @@ Patch1: heartbeat-3.0.4-disable-xinclude.patch
 Patch2: heartbeat-3.0.0-haresources.patch
 Patch3: heartbeat-3.0.4-link.patch
 Patch4: heartbeat-3.0.4-lsbinit.patch
+Patch5: heartbeat-automake-1.13.patch
 BuildRequires: glib2-devel
 BuildRequires: iputils
 BuildRequires: libtool-devel
@@ -179,6 +180,7 @@ Headers and shared libraries for writing programs for Heartbeat.
 %patch2 -p1 
 %patch3 -p0 -b .link
 %patch4 -p0
+%patch5 -p1 -b .am113~
 
 %build
 ./bootstrap

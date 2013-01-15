@@ -1,0 +1,11 @@
+--- Heartbeat-3-0-STABLE-3.0.5/configure.in.bero	2013-01-15 22:49:13.074173477 +0100
++++ Heartbeat-3-0-STABLE-3.0.5/configure.in	2013-01-15 22:49:20.009090558 +0100
+@@ -29,7 +29,7 @@ dnl   - Manually edit include/hb_config.
+ dnl     new defines
+ dnl   - Should not include HAVE_* defines
+ dnl   - Safe to include anywhere
+-AM_CONFIG_HEADER(include/config.h include/hb_config.h)
++AC_CONFIG_HEADERS([include/config.h include/hb_config.h])
+ ALL_LINGUAS="en fr"
+ 
+ AC_ARG_WITH(hapkgversion,
