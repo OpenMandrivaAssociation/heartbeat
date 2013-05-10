@@ -7,39 +7,40 @@
 %define gname haclient
 %define uname hacluster
 
-Summary: Messaging and membership subsystem for High-Availability Linux
-Name: heartbeat
-Version: 3.0.5
-Release: 2
-License: GPLv2 and LGPLv2+
-URL: http://linux-ha.org/
-Group: System/Servers
-Source0: http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-%{version}.tar.bz2
-Patch1: heartbeat-3.0.4-disable-xinclude.patch
-Patch2: heartbeat-3.0.0-haresources.patch
-Patch3: heartbeat-3.0.4-link.patch
-Patch4: heartbeat-3.0.4-lsbinit.patch
-Patch5: heartbeat-automake-1.13.patch
-BuildRequires: glib2-devel
-BuildRequires: iputils
-BuildRequires: libtool-devel
-BuildRequires: net-snmp-devel >= 5.4
-BuildRequires: bzip2-devel
-BuildRequires: ncurses-devel
-BuildRequires: openssl-devel
-BuildRequires: libxml2-devel
-BuildRequires: gettext
-BuildRequires: bison
-BuildRequires: flex
-BuildRequires: zlib-devel
-BuildRequires: mailx
-BuildRequires: which
-BuildRequires: cluster-glue-devel
-BuildRequires: libuuid-devel
-BuildRequires: xsltproc
-BuildRequires: docbook-style-xsl
-Requires: python-pyxml
-Requires: resource-agents
+Summary:	Messaging and membership subsystem for High-Availability Linux
+Name:		heartbeat
+Version:	3.0.5
+Release:	2
+License:	GPLv2 and LGPLv2+
+Url:		http://linux-ha.org/
+Group:		System/Servers
+Source0:	http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-%{version}.tar.bz2
+Patch1:		heartbeat-3.0.4-disable-xinclude.patch
+Patch2:		heartbeat-3.0.0-haresources.patch
+Patch3:		heartbeat-3.0.4-link.patch
+Patch4:		heartbeat-3.0.4-lsbinit.patch
+Patch5:		heartbeat-automake-1.13.patch
+
+BuildRequires:	bison
+BuildRequires:	docbook-style-xsl
+BuildRequires:	flex
+BuildRequires:	gettext
+BuildRequires:	iputils
+BuildRequires:	mailx
+BuildRequires:	which
+BuildRequires:	xsltproc
+BuildRequires:	bzip2-devel
+BuildRequires:	cluster-glue-devel
+BuildRequires:	libtool-devel
+BuildRequires:	net-snmp-devel >= 5.4
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(ncurses)
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(uuid)
+BuildRequires:	pkgconfig(zlib)
+Requires:	python-pyxml
+Requires:	resource-agents
 
 %description
 heartbeat is a basic high-availability subsystem for Linux-HA.
@@ -102,8 +103,7 @@ Requires:	%{name} = %{version}-%{release}
 Heartbeat library package.
 
 %files -n %libapphb
-%{_libdir}/libapphb.so.%{apphbmajor}
-%{_libdir}/libapphb.so.%{apphbmajor}.*
+%{_libdir}/libapphb.so.%{apphbmajor}*
 
 #---------------------------------------------------------
 %define ccmclientmajor 1
@@ -119,8 +119,7 @@ Obsoletes:	%{_lib}heartbeat1 < 3.0.0
 Heartbeat library package.
 
 %files -n %libccmclient
-%{_libdir}/libccmclient.so.%{ccmclientmajor}
-%{_libdir}/libccmclient.so.%{ccmclientmajor}.*
+%{_libdir}/libccmclient.so.%{ccmclientmajor}*
 
 #---------------------------------------------------------
 %define clmmajor 1
@@ -136,8 +135,7 @@ Obsoletes:	%{_lib}heartbeat1 < 3.0.0
 Heartbeat library package.
 
 %files -n %libclm
-%{_libdir}/libclm.so.%{clmmajor}
-%{_libdir}/libclm.so.%{clmmajor}.*
+%{_libdir}/libclm.so.%{clmmajor}*
 
 #---------------------------------------------------------
 %define hbclientmajor 1
@@ -153,18 +151,17 @@ Obsoletes:	%{_lib}heartbeat1 < 3.0.0
 Heartbeat library package.
 
 %files -n %libhbclient
-%{_libdir}/libhbclient.so.%{hbclientmajor}
-%{_libdir}/libhbclient.so.%{hbclientmajor}.*
+%{_libdir}/libhbclient.so.%{hbclientmajor}*
 
 #---------------------------------------------------------
 %package devel
-Summary: Heartbeat development package
-Group: Development/Other
-Requires: %libapphb = %{version}-%{release}
-Requires: %libccmclient = %{version}-%{release}
-Requires: %libclm = %{version}-%{release}
-Requires: %libhbclient = %{version}-%{release}
-Obsoletes: %{_lib}heartbeat1-devel < 3.0.0
+Summary:	Heartbeat development package
+Group:		Development/Other
+Requires:	%libapphb = %{version}-%{release}
+Requires:	%libccmclient = %{version}-%{release}
+Requires:	%libclm = %{version}-%{release}
+Requires:	%libhbclient = %{version}-%{release}
+Obsoletes:	%{_lib}heartbeat1-devel < 3.0.0
 
 %description devel
 Headers and shared libraries for writing programs for Heartbeat.
@@ -193,7 +190,6 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %make
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}
 # disable xsltproc from trying to hit the net
 export XSLTPROC_OPTIONS=""
