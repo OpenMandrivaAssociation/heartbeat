@@ -10,7 +10,7 @@
 Summary:	Messaging and membership subsystem for High-Availability Linux
 Name:		heartbeat
 Version:	3.0.5
-Release:	5
+Release:	6
 License:	GPLv2 and LGPLv2+
 Url:		http://linux-ha.org/
 Group:		System/Servers
