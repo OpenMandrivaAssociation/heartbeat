@@ -12,7 +12,7 @@ Name:		heartbeat
 Version:	3.0.5
 Release:	6
 License:	GPLv2 and LGPLv2+
-Url:		http://linux-ha.org/
+Url:		https://linux-ha.org/
 Group:		System/Servers
 Source0:	http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-%{version}.tar.bz2
 Patch1:		heartbeat-3.0.4-disable-xinclude.patch
