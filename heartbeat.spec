@@ -21,6 +21,11 @@ Patch3:		heartbeat-3.0.4-link.patch
 Patch4:		heartbeat-3.0.4-lsbinit.patch
 Patch5:		heartbeat-automake-1.13.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	docbook-style-xsl
 BuildRequires:	flex
